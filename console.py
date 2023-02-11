@@ -24,7 +24,7 @@ class ConsoleAirbnb(cmd.Cmd):
 
     def do_all(self, person):
         """all: Show all instances"""
-        print(f"hello {person}")
+        print("hello")
 
     def do_destroy(self, line):
         """destroy: Destroy an instance"""
