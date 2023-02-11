@@ -9,7 +9,7 @@ import os
 import re
 
 
-class AirbnbConsole(cmd.Cmd):
+class HelloWorld(cmd.Cmd):
     """
         Simple command processor example.
     """
@@ -56,9 +56,9 @@ class AirbnbConsole(cmd.Cmd):
 
     def emptyline(self):
         """emptyline: Empty line"""
-        pass
+        print("empty line")
 
 
 if __name__ == '__main__':
     """Main function"""
-    AirbnbConsole().cmdloop()
+    HelloWorld().cmdloop()
