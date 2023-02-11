@@ -1,0 +1,12 @@
+Ce code définit une classe appelée "BaseModel" en Python. 
+Cette classe est un modèle pour d'autres classes et fournit 
+certains attributs et méthodes communs qui peuvent être utilisés par ces autres classes.
+
+La méthode __init__ est utilisée pour instancier une instance de la classe. 
+Si des arguments de mots clés sont fournis,
+ la méthode définit les attributs de l'instance en utilisant ces arguments de mots clés. Si aucun argument de mot clé n'est fourni, la méthode définit un identifiant unique (id) pour l'instance à l'aide du module uuid, 
+définit les horodatages de création et de mise à jour à l'heure actuelle et ajoute l'instance à l'objet models.storage.
+
+La méthode __str__ retourne une représentation en chaîne de l'instance, au format [nom_de_classe] (id) représentation_dictionnaire_de_l'instance.
+
+La méthode save met à jour l'attribut updated_at de l'instance à l'heure actuelle et enregistre les modifications dans l'objet models.storage.

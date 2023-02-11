@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """Console module"""
 import cmd
 import models
@@ -9,7 +9,7 @@ import os
 import re
 
 
-class HelloWorld(cmd.Cmd):
+class AirbnbConsole(cmd.Cmd):
     """
         Simple command processor example.
     """
@@ -22,17 +22,17 @@ class HelloWorld(cmd.Cmd):
         """count: Count the number of instances of a class"""
         print("hello")
 
-    def do_all(self, line):
+    def do_all(self, person):
         """all: Show all instances"""
-        print("hello")
+        print(f"hello {person}")
 
     def do_destroy(self, line):
         """destroy: Destroy an instance"""
         print("hello")
 
-    def do_show(self, line):
+    def do_show(self, person):
         """show: Show an instance"""
-        print("hello")
+        print("hello" , person)
 
     def do_create(self, line):
         """create: Create an instance"""
@@ -61,4 +61,4 @@ class HelloWorld(cmd.Cmd):
 
 if __name__ == '__main__':
     """Main function"""
-    HelloWorld().cmdloop()
+    AirbnbConsole().cmdloop()
