@@ -20,27 +20,84 @@ class ConsoleAirbnb(cmd.Cmd):
 
     def do_count(self, line):
         """count: Count the number of instances of a class"""
-        print("hello")
+        counter = 0
+        if line == "":
+            print("** class name missing **")
+        else:
+            for key, value in models.storage.all().items():
+                if line in key:
+                    counter += 1
+            print(counter)
 
-    def do_all(self, person):
+    def do_all(self, obj):
         """all: Show all instances"""
-        print("hello")
+        if obj == "":
+            print("** class name missing **")
+        else:
+            args = shlex.split(obj)
+            if args[0] in models.classes:
+                for key, value in models.storage.all().items():
+                    if args[0] in key:
+                        print(value)
+            else:
+                print("** class doesn't exist **")
 
-    def do_destroy(self, line):
-        """destroy: Destroy an instance"""
-        print("hello")
-
-    def do_show(self, person):
+    def do_show(self, obj):
         """show: Show an instance"""
-        print("hello" , person)
+        if obj == "":
+            print("** class name missing **")
+        else:
+            args = shlex.split(obj)
+            if args[0] in models.classes:
+                if len(args) == 1:
+                    print("** instance id missing **")
+                else:
+                    key = args[0] + "." + args[1]
+                    if key in models.storage.all():
+                        print(models.storage.all()[key])
+                    else:
+                        print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
 
     def do_create(self, line):
         """create: Create an instance"""
-        print("hello")
+        if line == "":
+            print("** class name missing **")
+        else:
+            args = shlex.split(line)
+            if args[0] in models.classes:
+                new = models.classes[args[0]]()
+                new.save()
+                print(new.id)
+            else:
+                print("** class doesn't exist **")
 
     def do_update(self, line):
         """update: Update an instance"""
-        print("hello")
+        if line == "":
+            print("** class name missing **")
+        else:
+            args = shlex.split(line)
+            if args[0] in models.classes:
+                if len(args) == 1:
+                    print("** instance id missing **")
+                else:
+                    key = args[0] + "." + args[1]
+                    if key in models.storage.all():
+                        if len(args) == 2:
+                            print("** attribute name missing **")
+                        else:
+                            if len(args) == 3:
+                                print("** value missing **")
+                            else:
+                                setattr(models.storage.all()[key], args[2],
+                                        args[3])
+                                models.storage.all()[key].save()
+                    else:
+                        print("** no instance found **")
+            else:
+                print("** class doesn't exist **")
 
     def do_delete(self, line):
         """delete: Delete an instance"""

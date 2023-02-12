@@ -2,16 +2,19 @@
 """storage module"""
 import json
 import uuid
+
+
 class FileStorage:
     """FileStorage class"""
     __objects = {}
     __file_path = "MyJsonFile.json"
+
     def __init(self):
         """__init__ method"""
         pass
 
     def save(self):
-        with open(self.__file_path, mode='w', encoding='utf8' ) as myObj:
+        with open(self.__file_path, mode='w', encoding='utf8') as myObj:
             to_dict = self.__dict__
             toJson = json.dumps(to_dict)
             myObj.write(toJson)
@@ -34,7 +37,3 @@ class FileStorage:
                     self.__objects[key] = value
         except FileNotFoundError:
             pass
-
-
-test = FileStorage()
-test.new(test)
