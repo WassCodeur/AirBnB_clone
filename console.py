@@ -3,13 +3,15 @@
 import cmd
 import models
 import shlex
+from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
 import sys
 import json
 import os
 import re
 
 
-class ConsoleAirbnb(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """
         Simple command processor example.
     """
@@ -113,9 +115,9 @@ class ConsoleAirbnb(cmd.Cmd):
 
     def emptyline(self):
         """emptyline: Empty line"""
-        print("empty line")
+        pass
 
 
 if __name__ == '__main__':
     """Main function"""
-    ConsoleAirbnb().cmdloop()
+    HBNBCommand().cmdloop()

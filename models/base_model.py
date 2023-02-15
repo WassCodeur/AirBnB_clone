@@ -2,6 +2,7 @@
 """This module contains the BaseModel class"""
 import uuid
 from datetime import datetime
+import models
 import time
 # import models
 
@@ -29,6 +30,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """to_dict method"""
