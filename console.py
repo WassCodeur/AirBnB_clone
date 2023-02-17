@@ -8,7 +8,7 @@ from models.base_model import BaseModel
 import sys
 import json
 import os
-import re
+import r
 
 
 class HBNBCommand(cmd.Cmd):
